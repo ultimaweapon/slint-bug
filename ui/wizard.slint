@@ -1,0 +1,21 @@
+import { Button, VerticalBox } from "std-widgets.slint";
+
+enum Page {
+    Intro,
+    Firmware,
+}
+
+export component SetupWizard inherits Window {
+    property <Page> page;
+
+    VerticalBox {
+        if page == Page.Intro: VerticalBox { }
+        if page == Page.Firmware: Button {
+            text: "Previous";
+            clicked => {
+                // This line causing compilation errors.
+                root.page = Page.Intro;
+            }
+        }
+    }
+}

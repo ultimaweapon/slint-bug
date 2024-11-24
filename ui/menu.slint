@@ -1,0 +1,19 @@
+import { AboutSlint } from "std-widgets.slint";
+
+enum Page {
+    Help,
+    About
+}
+
+component Help { }
+
+component About {
+    AboutSlint { }
+}
+
+export component Menu {
+    property <Page> current-page;
+
+    if current-page == Page.Help: Help { }
+    if current-page == Page.About: About { }
+}
